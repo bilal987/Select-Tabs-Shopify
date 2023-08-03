@@ -1,0 +1,149 @@
+<!-- nws-choose-by-shoe -->
+<div class="nws-choose-by-shoe"  style="{% if section.settings.section-color != blank %}background-color:{{ section.settings.section-color }};{% endif %} {% if section.settings.section-bg != blank %}background-image:url('{{ section.settings.section-bg | img_url: 'master' }}');{% endif %}">
+  <div class="nws-custom-container">
+   <div class="custom-row">
+
+    <div class="custom-col col-8">
+      {% if section.settings.heading !=blank  %}
+        <div class="main-heading-site">
+          <h3>{{ section.settings.heading }}</h3>
+        </div>
+        {% endif %}
+
+        <div class="nws-choose-by-shoe-wrapper">
+
+          <div class="nws-choose-by-shoe-names">
+            <ul>
+              <li><a class="active" href="javascript:;" data-url="pg-sector1">MEN</a></li>
+              <li><a href="javascript:;" data-url="pg-sector2">WOMEN</a></li>
+              <li><a href="javascript:;" data-url="pg-sector3">YOUTH</a></li>
+            </ul>
+          </div>
+         
+          <div id="men" class="custom-row active tab-content" data-url-target="pg-sector1">
+          {% for block in section.blocks %}
+          {% if block.settings.shoe-box == 'men' %} 
+            <div class="custom-col-3">
+              <div class="nws-choose-by-shoe-box">
+                <div class="nws-choose-by-shoe-box-hvr">
+                  <img src="{{ block.settings.img | img_url: '130x' }}" alt="">
+                </div>
+                <h4>{{ block.settings.shoe-name }}</h4>
+              </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+          </div>
+
+       <div id="women" class="custom-row tab-content" data-url-target="pg-sector2">
+          {% for block in section.blocks %}
+            {% if block.settings.shoe-box == 'women' %} 
+            <div class="custom-col-3">
+              <div class="nws-choose-by-shoe-box">
+                <div class="nws-choose-by-shoe-box-hvr">
+                  <img src="{{ block.settings.img | img_url: '130x' }}" alt="">
+                </div>
+                <h4>{{ block.settings.shoe-name }}</h4>
+              </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+          </div>
+
+          <div id="youth" class="custom-row tab-content" data-url-target="pg-sector3">
+          {% for block in section.blocks %}
+            {% if block.settings.shoe-box == 'youth' %} 
+            <div class="custom-col-3">
+              <div class="nws-choose-by-shoe-box">
+                <div class="nws-choose-by-shoe-box-hvr">
+                  <img src="{{ block.settings.img | img_url: '130x' }}" alt="">
+                </div>
+                <h4>{{ block.settings.shoe-name }}</h4>
+              </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+          </div>
+       </div>
+    </div>
+
+     <div class="custom-col col-4">
+       <div class="nws-choose-by-shoe-desc">
+         {{ section.settings.desc }}
+       </div>
+     </div>
+     
+  </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Nws Choose By Shoe",
+    "settings": [
+    {
+      "type": "color",
+      "id": "section-color",
+      "label": "Section BG Color"
+    },
+    {
+        "type": "image_picker",
+        "id": "section-bg",
+        "label": "Section BG Image"
+      },
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading"
+      },
+      {
+        "type": "richtext",
+        "id": "desc",
+        "label": "Desc"
+      }
+    ],
+      "blocks": [
+    {
+      "type": "shoes-select",
+      "name": "Choose By Shoes",
+      "settings": [
+        {
+        "type": "image_picker",
+        "id": "img",
+        "label": "Add Image"
+        },
+        {
+          "type": "text",
+          "id": "shoe-name",
+          "label": "Shoe Name"
+        },
+        {
+        "type": "select",
+        "id": "shoe-box",
+        "label": "Shoe Select",
+        "options": [
+            {
+              "value": "men",
+              "label": "MEN"
+            },
+            {
+              "value": "women",
+              "label": "WOMEN"
+            },
+            {
+              "value": "youth",
+              "label": "YOUTH"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+    "presets": [
+      {
+      "name": "Nws Choose By Shoe",
+      "category": "Nws Choose By Shoe"
+      }
+    ]
+  }
+{% endschema %}
