@@ -77,6 +77,96 @@
   </div>
 </div>
 
+<style>
+.nws-choose-by-shoe .col-8 {
+    width: 70%;
+    padding: 0 15px;
+}
+.nws-choose-by-shoe .nws-choose-by-shoe-wrapper .tab-content {
+  display: none;
+  margin-top: 50px;
+}
+.nws-choose-by-shoe .nws-choose-by-shoe-wrapper .tab-content.active {
+    display: flex;
+}
+.nws-choose-by-shoe .nws-choose-by-shoe-wrapper .tab-content .custom-col-3 {
+    width: 25%;
+    padding: 0 15px;
+    margin-top: 20px;
+}
+.nws-choose-by-shoe .nws-choose-by-shoe-wrapper .tab-content .custom-col-3:nth-child(-n+4) {
+  margin: 10px 0;
+}
+.nws-choose-by-shoe .nws-choose-by-shoe-wrapper .nws-choose-by-shoe-names ul {
+    text-align: center;
+    margin-top: 30px;
+}
+.nws-choose-by-shoe .nws-choose-by-shoe-wrapper .nws-choose-by-shoe-names ul li {
+  display: inline-block;
+}
+.nws-choose-by-shoe .nws-choose-by-shoe-wrapper .nws-choose-by-shoe-names ul li a {
+    box-shadow: #0003 0 4px 8px, #00000030 0 6px 20px;
+    background-color: #fff;
+    font-weight: 700;
+    border: 0 solid #000;
+    border-radius: 5px;
+    display: inline-block;
+    padding: 10px 25px;
+    margin: 0 20px;
+    color: #9b9b9b;
+    letter-spacing: 2px;
+    text-align: center;
+    text-transform: uppercase;
+}
+.nws-choose-by-shoe .nws-choose-by-shoe-wrapper .nws-choose-by-shoe-names ul li a.active {
+      color: #e42e26;
+}
+.nws-choose-by-shoe .nws-choose-by-shoe-wrapper .tab-content .nws-choose-by-shoe-box .nws-choose-by-shoe-box-hvr {
+    position: relative;
+    overflow: hidden;
+    padding-bottom: calc(100% - 40px);
+}
+.nws-choose-by-shoe .nws-choose-by-shoe-wrapper .tab-content .nws-choose-by-shoe-box .nws-choose-by-shoe-box-hvr img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.nws-choose-by-shoe .nws-choose-by-shoe-wrapper .tab-content .nws-choose-by-shoe-box {
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: #0003 0 4px 8px, #00000030 0 6px 20px;
+    text-align: center;
+    transition: all .4s ease-in-out;
+}
+.nws-choose-by-shoe .nws-choose-by-shoe-wrapper .tab-content .nws-choose-by-shoe-box h4 {
+    font-weight: 700;
+    font-size: 15px;
+    text-transform: uppercase;
+    color: #000;
+    margin: 0;
+}
+.nws-choose-by-shoe .nws-choose-by-shoe-wrapper .tab-content .nws-choose-by-shoe-box:hover {
+  transform: scale(1.1);
+}
+</style>
+
+  <script>
+   jQuery('.nws-choose-by-shoe .nws-choose-by-shoe-names ul li:first-child a').addClass('active'); 
+   jQuery(".nws-choose-by-shoe .nws-choose-by-shoe-wrapper .tab-content:first-child").addClass('active');
+  
+   jQuery(".nws-choose-by-shoe .nws-choose-by-shoe-names ul li a").on('click', function(e) {
+      jQuery(".nws-choose-by-shoe .nws-choose-by-shoe-names ul li a").removeClass('active');
+      jQuery(this).addClass('active');
+      var val = jQuery(this).attr('data-url');
+      jQuery(".nws-choose-by-shoe .nws-choose-by-shoe-wrapper .tab-content").removeClass('active');
+      jQuery(".nws-choose-by-shoe .nws-choose-by-shoe-wrapper .tab-content[data-url-target='"+val+"']").addClass('active');
+    });
+      
+  </script>
+
 {% schema %}
   {
     "name": "Nws Choose By Shoe",
